@@ -1,0 +1,19 @@
+max_experiments "--max-experiments " c (${MAX_EXPERIMENTS})
+dims "--dims " c (${DIMS})
+limit "--limit " c (all)
+
+half_population_size "--population-size " i (50, 100)
+selection "--selection " c (tournament,natural,roulette,sus)
+
+crossover "--crossover " c (uniform,multi_point)
+crossover_points "--crossover-points " i (1, 5) | crossover == "multi_point"
+
+mutation "--mutation " c (bit_flip)
+mutation_probability "--mutation-probability " r (0, 0.01)
+
+populations "--populations " i (1,100)
+interval "--interval " c (10,20,40,60,80,100) | populations > 1
+topology "--topology " c (ring,mesh2d,mesh3d,fully_connected,star) | populations > 1
+ms "--migration-size " c (1,2,5,10) | populations > 1
+emigration_selection "--emigration-selection " c (tournament,natural,roulette,sus) | populations > 1
+immigration_selection "--immigration-selection " c (tournament,natural,roulette,sus) | populations > 1
